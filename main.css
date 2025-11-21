@@ -1,7 +1,22 @@
-:root{
-  --background-color: #E2E2E2;
-  --header-background-color: #0A2463;
-  --header-color: #e2e2e2;
+:root {
+  --dark-grey: #605F5E;
+  --light-grey: #E2E2E2;
+  --dark-blue: #0A2463;
+  --light-blue: #247BA0;
+  --light-red: #FB3640;
+  --black: #000000;
+  --white: #ffffff;
+  --transparent-black: rgba(0,0,0,0.5);
+}
+
+:root {
+  --background-color: var(--white);
+  --header-background-color: var(--dark-blue);
+  --header-color: var(--light-grey);
+  --border-color: var(--dark-grey);
+  --overlay-background-color: var(--transparent-black);
+  --navbar-background-color: var(--light-blue);
+  --text-color: var(--white);
 }
 
 * {
@@ -11,20 +26,84 @@
   box-sizing: border-box;
 }
 
+.inria-sans-light {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.inria-sans-regular {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inria-sans-bold {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inria-sans-light-italic {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.inria-sans-regular-italic {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.inria-sans-bold-italic {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
 header {
   background-color: var(--header-background-color);
   color: var(--header-color);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  .login-button {
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+  }
 }
 
-.login-button {
-  padding: 6px 10px;
-  border: 1px solid #605F5E;
-  border-radius: 10px;
-  align-items: center;
-  justify-items: center;
+.flex {
+  display: flex;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  padding: 20px;
+  background-color: var(--navbar-background-color);
+  border-right: 1px solid var(--border-color);
+  height: 100vw;
+  color: var(--text-color);
+  button {
+    margin-top: 10px;
+    background-color: var(--navbar-background-color);
+    border: none;
+    color: var(--text-color);
+  }
+}
+
+main {
+  flex-grow: 3;
 }
 
 .overlay {
@@ -33,7 +112,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5); /* dim background */
+  background: var(--overlay-background-color); /* dim background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,8 +120,17 @@ header {
 }
 .modal {
   background: var(--background-color);
-  padding: 2rem;
   border-radius: 8px;
   max-width: 400px;
   width: 90%;
+  padding: 20px;
+  form {
+    > p {
+      margin-top: 15px;
+    }
+    > input {
+      width: 100%;
+      margin-top: 5px;
+    }
+  }
 }

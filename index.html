@@ -7,19 +7,39 @@
     <meta name="description" content="A simple todo list">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
   </head>
   <body id="app">
     <header>
-      <h1>{{ header_title }}</h1>
-      <a class="login-button" @click="LoginModal">{{ login_button }}</a>
+      <h1 class="inria-sans-bold">{{ headerTitle }}</h1>
+      <a class="login-button inria-sans-regular" @click="loginModal">{{ loginButton }}</a>
     </header>
-    <main>
-      <section class="overlay" v-show="login_overlay" @click="LoginModal">
-        <div class="modal">
-          <h2>Login</h2>
+    <section class="flex">
+      <nav>
+        <h2 class="inria-sans-bold">{{ navbarTitle }}</h2>
+        <hr>
+        <div class="flex-vertical">
+          <button v-for="list in lists" :key="list.title"><h2 class="inria-sans-regular">{{ list.title }}</h2></button>
         </div>
-      </section>
-    </main>
+        <button><h2 class="inria-sans-bold">{{ newListLabel }}</h2></button>
+      </nav>
+      <main>
+        <section class="overlay" v-show="loginOverlay" @click.self="loginModal">
+          <div class="modal">
+            <h2 class="inria-sans-bold">{{ loginLabel }}</h2>
+            <form v-on:submit.prevent="login">
+              <p class="inria-sans-regular">{{ usernameLabel }}</p>
+              <input type="email" v-model="username">
+              <p class="inria-sans-regular">{{ passwordLabel }}</p>
+              <input type="password" v-model="password">
+              <button></button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </section>
     <footer>
 
     </footer>
