@@ -1,6 +1,7 @@
 :root {
   --dark-grey: #605F5E;
   --light-grey: #E2E2E2;
+  --very-light-grey: #F7F7F7;
   --dark-blue: #0A2463;
   --light-blue: #247BA0;
   --light-red: #FB3640;
@@ -17,6 +18,7 @@
   --overlay-background-color: var(--transparent-black);
   --navbar-background-color: var(--light-blue);
   --text-color: var(--white);
+  --todo-list-background-color: var(--very-light-grey);
 }
 
 * {
@@ -70,12 +72,16 @@ header {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
+  > h1 {
+    font-size: 50px;
+  }
   .login-button {
     padding: 6px 10px;
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    align-items: center;
+    align-content: center;
     justify-items: center;
+    font-size: 25px;
   }
 }
 
@@ -94,6 +100,9 @@ nav {
   border-right: 1px solid var(--border-color);
   height: 100vw;
   color: var(--text-color);
+  h2 {
+    font-size: 30px;
+  }
   button {
     margin-top: 10px;
     background-color: var(--navbar-background-color);
@@ -157,6 +166,66 @@ main {
     }
     > .submit-button:hover {
       background-color: var(--dark-blue);
+    }
+  }
+}
+
+.todo-list {
+  padding: 20px;
+  > h2 {
+    margin-bottom: 15px;
+    font-size: 30px;
+  }
+  > h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  > ul {
+    list-style-type: none;
+    margin-bottom: 10px;
+    > li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 7px;
+      background-color: var(--todo-list-background-color);
+      cursor: pointer;
+      > input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      > span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+      }
+      > span::after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      > p {
+        margin-left: 10px;
+        font-size: 18px;
+      }
+      &:hover {
+        background-color: var(--light-grey);
+        > input ~ span {
+          background-color: #ccc;
+        }
+        > input:checked ~ span {
+          background-color: #2196F3;
+        }
+      }
     }
   }
 }

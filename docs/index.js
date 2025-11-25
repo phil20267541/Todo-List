@@ -14,7 +14,12 @@ const app = Vue.createApp({
       password: "",
       showPasswordLabel: "Show Password",
       passwordVisible: false,
-      submitButtonLabel: "Submit"
+      submitButtonLabel: "Submit",
+      loggedIn: false,
+      currentListTitle: "Current List",
+      inProgressLabel: "In Progress",
+      completedLabel: "Completed",
+      currentList: [{task: "Sample Task", completed: false},{task: "Sample Task", completed: true},{task: "Sample Task", completed: false},{task: "Sample Task", completed: false},],
     }
   },
   methods: {
@@ -39,7 +44,10 @@ const app = Vue.createApp({
       });
       const result = await res.json();
       if (result.success) {
-        alert('Login successful!');   
+        this.loginOverlay = false;
+        this.email = '';
+        this.password = '';
+        this.loggedIn = true;
       }   
     }
   }
