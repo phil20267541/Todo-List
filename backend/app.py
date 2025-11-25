@@ -4,6 +4,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def home():
+    return jsonify({'message': 'App is live. Welcome to the Todo List API'}), 200
+
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.json
