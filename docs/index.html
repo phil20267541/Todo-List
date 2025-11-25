@@ -30,11 +30,12 @@
           <div class="modal">
             <h2 class="inria-sans-bold">{{ loginLabel }}</h2>
             <form v-on:submit.prevent="login">
-              <p class="inria-sans-regular">{{ usernameLabel }}</p>
-              <input type="email" v-model="username">
-              <p class="inria-sans-regular">{{ passwordLabel }}</p>
-              <input type="password" v-model="password">
-              <button></button>
+              <h3 class="inria-sans-regular">{{ emailLabel }}</h3>
+              <input type="email" v-model="email" class="inria-sans-regular" placeholder="Email">
+              <h3 class="inria-sans-regular">{{ passwordLabel }}</h3>
+              <input :type="passwordVisible ? 'text' : 'password'" v-model="password" class="inria-sans-regular" placeholder="Password" >
+              <button type="button" @click="showPassword" class="password-button">{{ showPasswordLabel }}</button><br>
+              <button type="submit" class="submit-button">{{ submitButtonLabel }}</button>
             </form>
           </div>
         </section>

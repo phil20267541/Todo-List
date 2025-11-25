@@ -8,18 +8,39 @@ const app = Vue.createApp({
       lists: [{title: "List"},{title: "List"},{title: "List"},{title: "List"},{title: "List"},],
       newListLabel: "+ New List",
       loginLabel: "Login",
-      usernameLabel: "Username",
-      username: "",
+      emailLabel: "Email",
+      email: "",
       passwordLabel: "Password",
       password: "",
+      showPasswordLabel: "Show Password",
+      passwordVisible: false,
+      submitButtonLabel: "Submit"
     }
   },
   methods: {
     loginModal() {
       this.loginOverlay = !this.loginOverlay;
     },
-    login() {
-      console.log("hi")
+    showPassword() {
+      this.passwordVisible = !this.passwordVisible;
+      if (this.passwordVisible) {
+        this.showPasswordLabel = "Hide Password";
+      } else {
+        this.showPasswordLabel = "Show Password";
+      }
+    },
+    async login() {
+      const res = await fetch('https://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: this.email, password: this.password })
+      });
+      const result = await res.json();
+      if (result.success) {
+        alert('Login successful!');   
+      }   
     }
   }
 })
