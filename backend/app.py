@@ -16,6 +16,6 @@ def login():
 
     # Dummy authentication logic
     if email == 'admin@example.com' and password == 'password':
-        return jsonify({'message': 'Login successful'}), 200
+        return jsonify({'message': 'Login successful', 'success': True}), 200
     else:
-        return jsonify({'message': 'Invalid credentials'}), 401
+        return jsonify({'message': 'Invalid credentials', 'success': False}), 401
