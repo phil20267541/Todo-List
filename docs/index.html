@@ -20,10 +20,10 @@
       <nav>
         <h2 class="inria-sans-bold">{{ navbarTitle }}</h2>
         <hr>
-        <div class="flex-vertical">
-          <button v-for="list in lists" :key="list.title"><h2 class="inria-sans-regular">{{ list.title }}</h2></button>
+        <div class="lists-container">
+          <button v-for="list in lists" :key="list.title" @click="selectList(list)"><h2 class="inria-sans-regular">{{ list.title }}</h2></button>
         </div>
-        <button><h2 class="inria-sans-bold">{{ newListLabel }}</h2></button>
+        <button @click="newList"><h2 class="inria-sans-bold">{{ newListLabel }}</h2></button>
       </nav>
       <main>
         <section class="overlay" v-show="loginOverlay" @click.self="loginModal">
@@ -40,21 +40,22 @@
           </div>
         </section>
         <section class="todo-list">
-          <h2 class="inria-sans-bold">{{ currentListTitle }}</h2>
+          <h2 class="inria-sans-bold">{{ currentList.title }}</h2>
           <h3 class="inria-sans-bold ">{{ inProgressLabel }}</h3>
           <ul>
-            <li v-for="item in currentList" v-show="!item.completed" :key="item.task">
+            <li v-for="item in currentList.tasks" v-show="!item.completed" :key="item.task">
               <input type="checkbox" v-model="item.completed"><span></span>
               <p class="inria-sans-regular">{{ item.task }}</p>
             </li>
           </ul>
           <h3 class="inria-sans-bold ">{{ completedLabel }}</h3>
           <ul>
-            <li v-for="item in currentList" v-show="item.completed" :key="item.task">
+            <li v-for="item in currentList.tasks" v-show="item.completed" :key="item.task">
               <input type="checkbox" v-model="item.completed"><span></span>
               <p class="inria-sans-regular">{{ item.task }}</p>
             </li>
           </ul>
+          <button @click="addItem"><h2 class="inria-sans-regular">+ New Item</h2></button>
         </section>
       </main>
     </section>

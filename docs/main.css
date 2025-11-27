@@ -25,6 +25,8 @@
   --checkbox-checked-color: var(--light-red);
   --checkbox-hover-color: var(--very-light-red);
   --checkbox-border-color: var(--light-red);
+  --scrollbar-background-color: var(--light-blue);
+  --scrollbar-color: var(--dark-blue);
 }
 
 * {
@@ -104,16 +106,56 @@ nav {
   padding: 20px;
   background-color: var(--navbar-background-color);
   border-right: 1px solid var(--border-color);
-  height: 100vw;
+  height: calc(100vh - 84px);
+  width: 20vw;
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
   h2 {
     font-size: 30px;
+    justify-self: center;
+    flex-shrink: 0;
   }
-  button {
+  hr {
+    flex-shrink: 0;
+  }
+  .lists-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    > button {
     margin-top: 10px;
     background-color: var(--navbar-background-color);
     border: none;
     color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    }
+  }
+  .lists-container::-webkit-scrollbar {
+    width: 10px;
+  }
+  .lists-container::-webkit-scrollbar-track {
+    background: var(--scrollbar-background-color);
+    border-radius: 5px;
+  }
+  .lists-container::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border-radius: 5px;
+  }
+  > button {
+    flex-shrink: 0;
+    margin-top: 10px;
+    background-color: var(--navbar-background-color);
+    border: none;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
   }
 }
 

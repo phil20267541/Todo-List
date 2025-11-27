@@ -5,7 +5,10 @@ const app = Vue.createApp({
       loginButton: "Login",
       loginOverlay: false,
       navbarTitle: "My Lists",
-      lists: [{title: "List"},{title: "List"},{title: "List"},{title: "List"},{title: "List"},],
+      lists: [
+        { title: "List 1", tasks: [{ task: "Sample Task", completed: false }] },
+        { title: "List 2", tasks: [{ task: "Another Task", completed: true }] }
+      ],
       newListLabel: "+ New List",
       loginLabel: "Login",
       emailLabel: "Email",
@@ -19,7 +22,7 @@ const app = Vue.createApp({
       currentListTitle: "Current List",
       inProgressLabel: "In Progress",
       completedLabel: "Completed",
-      currentList: [{task: "Sample Task", completed: false},{task: "Sample Task", completed: true},{task: "Sample Task", completed: false},{task: "Sample Task", completed: false},],
+      currentList: { title: "Current List", tasks: [] },
     }
   },
   methods: {
@@ -49,7 +52,16 @@ const app = Vue.createApp({
         this.password = '';
         this.loggedIn = true;
       }   
-    }
+    },
+    newList() {
+      this.lists.push({title: "New List", tasks: []}); 
+    },
+    addItem() {
+      this.currentList.tasks.push({task: "New Task", completed: false});
+    },
+    selectList(list) {
+      this.currentList = list;
+    },
   }
 })
 
