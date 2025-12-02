@@ -40,19 +40,19 @@
           </div>
         </section>
         <section class="todo-list">
-          <h2 class="inria-sans-bold">{{ currentList.title }}</h2>
+          <input v-model="currentList.title" class="inria-sans-bold editable-title" type="text">
           <h3 class="inria-sans-bold ">{{ inProgressLabel }}</h3>
           <ul>
             <li v-for="item in currentList.tasks" v-show="!item.completed" :key="item.task">
               <input type="checkbox" v-model="item.completed"><span></span>
-              <p class="inria-sans-regular">{{ item.task }}</p>
+              <input v-model="item.task" class="inria-sans-regular editable-task" type="text">
             </li>
           </ul>
           <h3 class="inria-sans-bold ">{{ completedLabel }}</h3>
           <ul>
             <li v-for="item in currentList.tasks" v-show="item.completed" :key="item.task">
               <input type="checkbox" v-model="item.completed"><span></span>
-              <p class="inria-sans-regular">{{ item.task }}</p>
+              <input v-model="item.task" class="inria-sans-regular editable-task" type="text">
             </li>
           </ul>
           <button @click="addItem"><h2 class="inria-sans-regular">+ New Item</h2></button>

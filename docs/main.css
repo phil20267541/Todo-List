@@ -18,8 +18,10 @@
   --border-color: var(--dark-grey);
   --overlay-background-color: var(--transparent-black);
   --navbar-background-color: var(--light-blue);
+  --navbar-button-hover-background-color: var(--dark-blue);
   --text-color: var(--white);
   --todo-list-background-color: var(--very-light-grey);
+  --todo-list-title-color: var(--light-red);
   --checkbox-background-color: var(--white);
   --checkbox-border-color: var(--dark-grey);
   --checkbox-checked-color: var(--light-red);
@@ -157,6 +159,9 @@ nav {
     width: 100%;
     margin-top: auto;
   }
+  > button:hover {
+    background-color: var(--navbar-button-hover-background-color);
+  }
 }
 
 main {
@@ -220,9 +225,12 @@ main {
 
 .todo-list {
   padding: 20px;
-  > h2 {
-    margin-bottom: 15px;
+  > .editable-title {
     font-size: 30px;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--todo-list-title-color);
   }
   > h3 {
     margin-top: 15px;
@@ -263,9 +271,12 @@ main {
       > input[type="checkbox"]:checked + span {
         background-color: var(--checkbox-checked-color);
       }
-      > p {
+      > .editable-task {
         margin-left: 10px;
         font-size: 18px;
+        width: 100%;
+        border: none;
+        background: transparent;
       }
       &:hover {
         > input ~ span {

@@ -62,6 +62,9 @@ const app = Vue.createApp({
     selectList(list) {
       this.currentList = list;
     },
+  },
+  mounted() {
+    this.currentList = this.lists[0];
   }
 })
 
